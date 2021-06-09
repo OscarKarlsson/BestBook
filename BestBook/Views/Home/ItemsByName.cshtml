@@ -1,0 +1,10 @@
+﻿@model BookAuthor
+@{
+    ViewData["Title"] = "Lists";
+}
+<section>
+    @foreach (var item in Model.Books)
+    {
+        @item.Name
+    }
+</section>

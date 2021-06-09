@@ -1,5 +1,6 @@
 ﻿using BestBook.Model;
 using BestBook.Models;
+using BestBook.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -29,9 +30,16 @@ namespace BestBook.Controllers
         public IActionResult BooksByGenre(int id)
         {
             IEnumerable<Book> books = _context.Books.Where(b => b.GenreId == id);
+
             return View(books);
         }
+        public IActionResult ItemsByName(string SearchText)
+        {
+            var bookAuthor = new BookAuthor() { Books = _context.Books.Where(b => b.Name.Contains(SearchText)).ToList(), Authors = _context.Authors.Where(b => b.Name.Contains(SearchText)).ToList() };
 
+            return View(bookAuthor);
+        }
+        
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
