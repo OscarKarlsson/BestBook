@@ -1,10 +1,20 @@
-﻿@model BookAuthor
+﻿
 @{
     ViewData["Title"] = "Lists";
 }
-<section>
-    @foreach (var item in Model.Books)
-    {
-        @item.Name
+
+<div class="container">
+    <button type="button" class="btn btn-secondary" asp-action="BooksIframe">Books</button>
+    <button type="button" class="btn btn-secondary" onclick="urlChange('http://www.bing.com')">Authors</button>
+</div>
+<br />
+<iframe id="InfoDisplay" src="" style="width:100%;height:50vh;overflow:scroll;border: 1px solid black;">
+
+</iframe>
+
+<script>
+    function urlChange(url) {
+        var site = url;
+        document.getElementById('InfoDisplay').src = site;
     }
-</section>
+</script>

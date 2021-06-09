@@ -26,7 +26,10 @@ namespace BestBook.Controllers
             IEnumerable<Genre> genres = _context.Genres;
             return View(genres);
         }
-
+        public IActionResult BooksIframe()
+        {
+            return View();
+        }
         public IActionResult BooksByGenre(int id)
         {
             IEnumerable<Book> books = _context.Books.Where(b => b.GenreId == id);
@@ -35,9 +38,9 @@ namespace BestBook.Controllers
         }
         public IActionResult ItemsByName(string SearchText)
         {
-            var bookAuthor = new BookAuthor() { Books = _context.Books.Where(b => b.Name.Contains(SearchText)).ToList(), Authors = _context.Authors.Where(b => b.Name.Contains(SearchText)).ToList() };
+            ViewBag.bookAuthor = new BookAuthor() { Books = _context.Books.Where(b => b.Name.Contains(SearchText)).ToList(), Authors = _context.Authors.Where(b => b.Name.Contains(SearchText)).ToList() };
 
-            return View(bookAuthor);
+            return View();
         }
         
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
