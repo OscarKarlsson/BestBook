@@ -4,17 +4,28 @@
 }
 
 <div class="container">
-    <button type="button" class="btn btn-secondary" asp-action="BooksIframe">Books</button>
-    <button type="button" class="btn btn-secondary" onclick="urlChange('http://www.bing.com')">Authors</button>
-</div>
-<br />
-<iframe id="InfoDisplay" src="" style="width:100%;height:50vh;overflow:scroll;border: 1px solid black;">
 
-</iframe>
+
+    <button type="button" class="btn btn-secondary" onclick="urlChange("./../")">Books</button>
+    <button type="button" class="btn btn-secondary" onclick="showUrl()">Authors</button>
+</div>
+
+<br />
+
 
 <script>
     function urlChange(url) {
-        var site = url;
-        document.getElementById('InfoDisplay').src = site;
+        document.getElementById('InfoDisplay').src = url;
     }
 </script>
+
+<iframe id="InfoDisplay" src="about:blank" style="width:100%;height:50vh;overflow:scroll;border: 1px solid black;">
+</iframe>
+
+
+
+
+
+
+
+
