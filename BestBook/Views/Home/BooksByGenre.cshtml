@@ -1,0 +1,14 @@
+﻿@model IEnumerable<Book>
+@{
+    Layout = "_Layout";
+}
+<section id="Body">
+    <div class="container">
+        @foreach (var book in Model)
+        {
+            <div>
+                @book.Name
+            </div>
+        }
+    </div>
+</section>

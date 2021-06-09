@@ -20,6 +20,7 @@ namespace BestBook.Model
         public string Text { get; set; }
         [Column("BookID")]
         public int? BookId { get; set; }
+        public int? Stars { get; set; }
 
         [ForeignKey(nameof(BookId))]
         [InverseProperty("Reviews")]

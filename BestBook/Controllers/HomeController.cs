@@ -1,4 +1,5 @@
-﻿using BestBook.Models;
+﻿using BestBook.Model;
+using BestBook.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -12,20 +13,23 @@ namespace BestBook.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly BookContext _context;
+        public HomeController(ILogger<HomeController> logger, BookContext context)
         {
+            _context = context;
             _logger = logger;
         }
 
         public IActionResult Index()
         {
-            return View();
+            IEnumerable<Genre> genres = _context.Genres;
+            return View(genres);
         }
 
-        public IActionResult Privacy()
+        public IActionResult BooksByGenre(int id)
         {
-            return View();
+            IEnumerable<Book> books = _context.Books.Where(b => b.GenreId == id);
+            return View(books);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

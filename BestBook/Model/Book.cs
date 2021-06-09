@@ -28,6 +28,10 @@ namespace BestBook.Model
         public int? GenreId { get; set; }
         [Column("AuthorID")]
         public int AuthorId { get; set; }
+        [StringLength(100)]
+        public string PicLink { get; set; }
+        [Column(TypeName = "decimal(3, 2)")]
+        public decimal? AvgStar { get; set; }
 
         [ForeignKey(nameof(AuthorId))]
         [InverseProperty("Books")]
