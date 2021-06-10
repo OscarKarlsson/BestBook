@@ -1,5 +1,76 @@
-﻿
+﻿@model Book
 @{
     Layout = "_Layout";
 }
-test
+
+<form method="post" asp-action="Create">
+    <div class="border p-3">
+
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <h2 class="text-info pl-3">Add Book</h2>
+                    <div class="col-4">
+                        <div>
+                            <label asp-for="Name">Title:</label>
+                            <input asp-for="Name" class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div>
+                            <label asp-for="Description">Description:</label>
+                            <textarea asp-for="Description" class="form-control"></textarea>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+                        <div>
+                            <label asp-for="PicLink">Image URL:</label>
+                            <input asp-for="PicLink" class="form-control" />
+                            <span asp-validation-for="PicLink" class="text-danger"></span>
+                        </div>
+
+                        <div class="container">
+                            <div class="col p-0">
+                                <label asp-for="Author">Author:</label>
+                                <input asp-for="Author" class="form-control"
+                                       value="
+                                   @if (TempData["name"] != null)
+                                    {
+                                        @TempData["name"].ToString()
+                                    }" />
+                                <span asp-validation-for="Author" class="text-danger"></span>
+                            </div>
+                            <div class="col">
+                                <button class="btn btn-primary">Search</button>
+                            </div>
+                        </div>
+
+
+                        <div>
+                            <label asp-for="Genre">Genre:</label>
+                            <select asp-for="Genre" class="form-control">
+                                @*Här ska det in en foreachloop som lägger till genres, typ*@
+                                <option value="value">Genre</option>
+                                <option value="value">Genre</option>
+                                <option value="value">Genre</option>
+                                <option value="value">Genre</option>
+                            </select>
+                            <span asp-validation-for="Genre" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col custom-class">
+                    <iframe id="AuthorIframe" src="/Author/AddAuthor" style="width:100%;height:50vh;overflow:scroll;border: 1px solid black;">
+                    </iframe>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</form>
+<script>
+    function urlChange(url) {
+        document.getElementById('InfoDisplay').src = url;
+    }
+</script>
