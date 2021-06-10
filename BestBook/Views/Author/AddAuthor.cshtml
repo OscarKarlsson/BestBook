@@ -2,6 +2,10 @@
 @{
     Layout = "";
 }
+<head>  
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 <h2 class="text-info pl-3">Add Author</h2>
 <div class="col col-4">
@@ -14,7 +18,5 @@
         <label asp-for="HomeTown">Home Town:</label>
         <input asp-for="HomeTown" class="form-control" />
         <span asp-validation-for="HomeTown" class="text-danger"></span>
-    </div>
-    test
-
+    </div>   
 </div>
