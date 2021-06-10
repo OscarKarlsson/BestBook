@@ -19,8 +19,7 @@ namespace BestBook.Controllers
             return View();
         }
         public IActionResult AddAuthor()
-        {
-            TempData["name"] = "Stephen";
+        {            
             return View();
         }
         public IActionResult SearchAuthor(string name)

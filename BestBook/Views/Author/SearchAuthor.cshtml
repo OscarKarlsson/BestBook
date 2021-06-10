@@ -7,13 +7,19 @@
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 
-<div class="list-group">
+<div class="list-group col-6">
     @foreach (var author in Model)
     {
-        <button type="button" class="list-group-item list-group-item-action" aria-current="true" onclick="parent.Hello(@author.Name)">
+        <button style="position:absolute" type="button" class="list-group-item list-group-item-action" aria-current="true" onclick="parent.SendAuthor('@author.Name')">
             @author.Name
         </button>
     }
+
+</div>
+<div>
+    <button type="button" class="float-right btn btn-primary p-2">
+        Create New Author
+    </button>
 </div>
 
 <script>
