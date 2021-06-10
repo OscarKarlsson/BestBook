@@ -11,10 +11,10 @@
 </div>*@
 <ul class="nav nav-tabs">
     <li class="nav-item" id="book">
-        <a class="nav-link active" aria-current="page" onclick="urlChange('/Home/BooksIframe')">Book</a>
+        <a class="nav-link active" data-bs-toggle="tab" aria-current="page" onclick="urlChange('/Home/BooksIframe')">Book</a>
     </li>
     <li class="nav-item" id="author">
-        <a class="nav-link" onclick="urlChange('/Home/AuthorIframe')">Authors</a>
+        <a class="nav-link" data-bs-toggle="tab" onclick="urlChange('/Home/AuthorIframe')">Authors</a>
     </li>
 </ul>
 <br />
@@ -24,7 +24,6 @@
     function urlChange(url) {
         document.getElementById('InfoDisplay').src = url;
     }
-
 </script>
 <script>
     var triggerTabList = [].slice.call(document.querySelectorAll('author'))
