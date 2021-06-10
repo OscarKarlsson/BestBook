@@ -30,6 +30,10 @@ namespace BestBook.Controllers
         {
             return View();
         }
+        public IActionResult AuthorIframe()
+        {
+            return View();
+        }
         public IActionResult BooksByGenre(int id)
         {
             IEnumerable<Book> books = _context.Books.Where(b => b.GenreId == id);
