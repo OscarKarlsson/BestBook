@@ -11,10 +11,10 @@
 </div>*@
 <ul class="nav nav-tabs">
     <li class="nav-item" id="book">
-        <a class="nav-link active" data-bs-toggle="tab" aria-current="page" onclick="urlChange('/Home/BooksIframe')">Book</a>
+        <a class="nav-link active" data-bs-toggle="tab" aria-current="page" onclick="urlChange('BooksIframe')">Book</a>
     </li>
     <li class="nav-item" id="author">
-        <a class="nav-link" data-bs-toggle="tab" onclick="urlChange('/Home/AuthorIframe')">Authors</a>
+        <a class="nav-link" data-bs-toggle="tab" onclick="urlChange('AuthorIframe')">Authors</a>
     </li>
 </ul>
 <br />
@@ -22,7 +22,7 @@
 
 <script>
     function urlChange(url) {
-        document.getElementById('InfoDisplay').src = url;
+        document.getElementById('InfoDisplay').src = '/Home/' + url;
     }
 </script>
 <script>@*fungerar inte enligt Oscar*@
