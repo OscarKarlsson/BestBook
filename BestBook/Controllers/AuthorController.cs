@@ -28,6 +28,13 @@ namespace BestBook.Controllers
             var authors = Context.Authors.Where(a => a.Name.Contains(name));
             return View(authors);
         }
-        
+        public IActionResult AuthorDetails(int id)
+        {
+            var author = Context.Authors.FirstOrDefault(b => b.Id == id);
+
+            return View(author);
+
+        }
+
     }
 }

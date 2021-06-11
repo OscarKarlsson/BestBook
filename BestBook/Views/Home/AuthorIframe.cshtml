@@ -1,5 +1,28 @@
-﻿
+﻿@model IEnumerable<Author>
 @{
     Layout = "";
 }
-Authors
+
+<head>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+
+@if (Model != null)
+{
+    @foreach (var author in Model)
+    {
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <b>@author.Name</b> <br/>@author.HomeTown
+                </div>
+                <div class="col">
+                    <input type="submit" value="Details" onclick="location.href='@Url.Action("AuthorDetails", "Author", new {id=author.Id })'">
+                </div>
+            </div>
+        </div>
+
+    }
+
+}

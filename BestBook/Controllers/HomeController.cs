@@ -15,6 +15,7 @@ namespace BestBook.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly BookContext _context;
+        private static BookAuthor _bookAuthor;
         public HomeController(ILogger<HomeController> logger, BookContext context)
         {
             _context = context;
@@ -28,21 +29,24 @@ namespace BestBook.Controllers
         }
         public IActionResult BooksIframe()
         {
-            return View();
+            var books = _bookAuthor.Books;
+
+            return View(books);
         }
         public IActionResult AuthorIframe()
         {
-            return View();
+            var authors = _bookAuthor.Authors;
+            return View(authors);
         }
         public IActionResult BooksByGenre(int id)
         {
-            IEnumerable<Book> books = _context.Books.Where(b => b.GenreId == id);
+            IEnumerable<Book> books = _context.Books.Where(b => b.GenreId == id).OrderBy(b => b.Name);
 
             return View(books);
         }
         public IActionResult ItemsByName(string SearchText)
         {
-            ViewBag.bookAuthor = new BookAuthor() { Books = _context.Books.Where(b => b.Name.Contains(SearchText)).ToList(), Authors = _context.Authors.Where(b => b.Name.Contains(SearchText)).ToList() };
+            _bookAuthor = new BookAuthor() { Books = _context.Books.Where(b => b.Name.Contains(SearchText)).ToList(), Authors = _context.Authors.Where(b => b.Name.Contains(SearchText)).ToList() };
 
             return View();
         }

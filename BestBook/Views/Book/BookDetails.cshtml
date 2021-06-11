@@ -1,0 +1,25 @@
+﻿@model Book
+@{
+    Layout = "";
+}
+
+<head>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+
+<h1 style="text-align:center">@Model.Name</h1>
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-md-auto" style="width:200px">
+            <img src="@Model.PicLink" alt="No pic" width="200" height="250" />
+        </div>
+        <div class="col-3">
+            <p>@Model.Description</p>
+        </div>
+    </div>
+</div>
+
+
+
+

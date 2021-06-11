@@ -34,5 +34,12 @@ namespace BestBook.Controllers
             }
             return View(book);
         }
+        public IActionResult BookDetails(int id)
+        {
+            var book = Context.Books.FirstOrDefault(b => b.Id == id);
+
+            return View(book);
+
+        }
     }
 }

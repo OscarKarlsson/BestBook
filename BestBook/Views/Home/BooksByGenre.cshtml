@@ -3,13 +3,26 @@
     ViewData["Title"] = "Genres";
     Layout = "_Layout";
 }
-<section id="Body">
-    <div class="container">
-        @foreach (var book in Model)
-        {
-            <div>
-                @book.Name
+
+@if (Model != null)
+{
+    @foreach (var book in Model)
+    {
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <img src="@book.PicLink" alt="Sorry, no pic" width="50" height="60" />
+                </div>
+                <div class="col">
+                    <b>@book.Name</b>
+                </div>
+                <div class="col">
+                    <button class="btn btn-dark">Details</button>
+                </div>
             </div>
-        }
-    </div>
-</section>
+        </div>
+        <br/>
+
+    }
+
+}
