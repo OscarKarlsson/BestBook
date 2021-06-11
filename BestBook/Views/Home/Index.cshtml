@@ -4,11 +4,23 @@
 }
 
 <section>
-    <form method="get" style="text-align:center;">
+    <h1 style="text-align:center;">BestBooks Database</h1>
+    <form method="get" style="text-align:center;padding:5vh;">
         <label><input class="form-control" type="text" name="SearchText" placeholder="Book/Author"  /></label>
         <input type="submit" value="Search" asp-action="ItemsByName" asp-route-myvar="SearchText"  />
     </form>
-    <table class="center">
+    <br />
+    <div class="container" style="border: 1px solid black;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        width:40%;">       
+        @foreach (var genre in Model)
+        {
+        <a asp-action="BooksByGenre" asp-route-id="@genre.Id">@genre.GenreName</a>
+        }
+    </div>
+    @*<table class="center">
         <tr>
             <th>Genre</th>
         </tr>
@@ -16,5 +28,5 @@
         {
             <tr><td><a asp-action="BooksByGenre" asp-route-id="@item.Id">@item.GenreName</a></td></tr>
         }
-    </table>
+    </table>*@
 </section>
