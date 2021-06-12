@@ -1,15 +1,17 @@
 ﻿using BestBook.Model;
+using BestBook.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+using Microsoft.AspNetCore.Session;
 namespace BestBook.Controllers
 {
     public class BookController : Controller
     {
         public BookContext Context { get; set; }
+
         public BookController(BookContext context)
         {
             this.Context = context;
@@ -20,6 +22,8 @@ namespace BestBook.Controllers
         }
         public IActionResult Create()
         {
+            IEnumerable<Genre> genreList = Context.Genres;
+            ViewData["genres"] = genreList;
             return View();
         }
         [HttpPost]

@@ -5,7 +5,6 @@
 
 <form method="post" asp-action="Create">
     <div class="border p-3">
-
         <div class="container">
             <div class="row">
                 <div class="col">
@@ -44,10 +43,10 @@
                             <label asp-for="Genre">Genre:</label>
                             <select asp-for="Genre" class="form-control">
                                 @*Här ska det in en foreachloop som lägger till genres, typ*@
-                                <option value="value">Genre</option>
-                                <option value="value">Genre</option>
-                                <option value="value">Genre</option>
-                                <option value="value">Genre</option>
+                                @foreach (var genre in ViewData["genres"] as IEnumerable<Genre>)
+                                {
+                                    <option value="@genre.Id">@genre.GenreName</option>
+                                }
                             </select>
                             <span asp-validation-for="Genre" class="text-danger"></span>
                             <br />
