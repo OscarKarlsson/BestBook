@@ -29,9 +29,9 @@
 
                         <div class="container">
                             <div class="col p-0">
-                                <label asp-for="Author">Author:</label>
-                                <input type="text" id="authorName" asp-for="Author" class="form-control" value="" />
-                                <span asp-validation-for="Author" class="text-danger"></span>
+                                <label asp-for="AuthorId">Author:</label>
+                                <input type="text" id="authorName" asp-for="AuthorId" class="form-control" value="" />
+                                <span asp-validation-for="AuthorId" class="text-danger"></span>
                             </div>
                             <div class="col">
                                 <button type="button" class="btn" onclick="urlChange()">Search</button>
@@ -40,15 +40,15 @@
 
 
                         <div>
-                            <label asp-for="Genre">Genre:</label>
-                            <select asp-for="Genre" class="form-control">
+                            <label asp-for="GenreId">Genre:</label>
+                            <select asp-for="GenreId" class="form-control">
                                 @*Här ska det in en foreachloop som lägger till genres, typ*@
                                 @foreach (var genre in ViewData["genres"] as IEnumerable<Genre>)
                                 {
                                     <option value="@genre.Id">@genre.GenreName</option>
                                 }
                             </select>
-                            <span asp-validation-for="Genre" class="text-danger"></span>
+                            <span asp-validation-for="GenreId" class="text-danger"></span>
                             <br />
                             <button class="btn btn-primary">Add Book</button>
                         </div>
