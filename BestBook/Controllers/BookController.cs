@@ -34,7 +34,7 @@ namespace BestBook.Controllers
             {
                 Context.Books.Add(book);
                 Context.SaveChanges();
-                return RedirectToAction("/Home/Index");
+                return RedirectToAction("Index","Home");
             }
             return View(book);
         }
