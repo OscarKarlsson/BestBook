@@ -1,6 +1,7 @@
 ﻿using BestBook.Model;
 using BestBook.Models;
 using BestBook.ViewModels;
+using Humanizer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -30,7 +31,7 @@ namespace BestBook.Controllers
         public IActionResult BooksIframe()
         {
             var books = _bookAuthor.Books;
-
+            
             return View(books);
         }
         public IActionResult AuthorIframe()
