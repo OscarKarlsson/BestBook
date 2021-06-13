@@ -1,0 +1,29 @@
+﻿@model Author
+@{
+    Layout = "_Layout";
+}
+<form method="post" asp-action="Create">
+    <div class="border p-3">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <h2 class="text-info pl-3">Add Author</h2>
+                    <div class="col-4">
+                        <div>
+                            <label asp-for="Name">Title:</label>
+                            <input asp-for="Name" class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div>
+                            <label asp-for="HomeTown">Description:</label>
+                            <input asp-for="HomeTown" class="form-control" />
+                            <span asp-validation-for="HomeTown" class="text-danger"></span>
+                        </div>
+                        <button class="btn btn-primary">Add Author</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

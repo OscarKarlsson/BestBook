@@ -35,6 +35,17 @@ namespace BestBook.Controllers
             return View(author);
 
         }
-
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(Author author)
+        {
+            if (ModelState.IsValid)
+            {
+                Context.Authors.Add(author);
+                Context.SaveChanges();
+                return RedirectToAction("Index", "Home");
+            }
+            return View(author);
+        }
     }
 }

@@ -46,7 +46,9 @@
                                 @foreach (var genre in ViewData["genres"] as IEnumerable<Genre>)
                                 {
                                     <option value="@genre.Id">@genre.GenreName</option>
+                                    
                                 }
+                                
                             </select>
                             <span asp-validation-for="GenreId" class="text-danger"></span>
                             <br />
@@ -77,5 +79,11 @@
         var name = input;
         console.log(name);
         document.getElementById('authorName').value = name;
+    }
+</script>
+<script>
+    function changeIframe() {
+        document.getElementById('AuthorIframe').src = '/Author/Create';
+        
     }
 </script>
