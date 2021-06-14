@@ -13,11 +13,20 @@
     <div class="row justify-content-md-center">
         <div class="col-md-auto" style="width:200px">
             <img src="@Model.PicLink" alt="No pic" width="200" height="250" />
+            <br /><br />
+            <input type="submit" class="btn btn-outline-primary" style="height:50px" value="Add" onclick="location.href='@Url.Action("CreateReview", "Review", new {bookId=Model.Id })'">
+            @*<input type="submit" name="addReview" value="Add Review" onclick="location.href='@Url.Action("CreateReview","Review", new {bookId = Model.Id })'">*@
+            <br />
+            <input type="submit" name="deleteBook" value="Delete Book" />
+            <br />
+            <input type="submit" name="editBook" value="Edit Book" />
         </div>
         <div class="col-3">
             <p>@Model.Description</p>
         </div>
+
     </div>
+
 </div>
 
 

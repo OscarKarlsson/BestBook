@@ -1,0 +1,54 @@
+﻿@model Review
+@{
+    Layout = "";
+}
+<head>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+
+<form method="post" asp-action="CreateReview">
+    <div class="border p-3">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <h2 class="text-info pl-3">Add Review</h2>
+                    <div class="col-4">
+                        <div>
+                            <label asp-for="Name">Title:</label>
+                            <input asp-for="Name" class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div>
+                            <label asp-for="Text">Description:</label>
+                            <textarea asp-for="Text" class="form-control"></textarea>
+                            <span asp-validation-for="Text" class="text-danger"></span>
+                        </div>
+                        <div>
+                            <label asp-for="Stars">Genre:</label>
+                            <select asp-for="Stars" class="form-control">                               
+                                
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>                                 
+
+                            </select>
+                            <span asp-validation-for="Stars" class="text-danger"></span>
+                            <br />
+                            <button class="btn btn-primary">Add Review</button>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+
+    </div>
+</form>
+
+
+

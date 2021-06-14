@@ -32,10 +32,13 @@ namespace BestBook.Controllers
         {
             if (ModelState.IsValid)
             {
+                
                 Context.Books.Add(book);
                 Context.SaveChanges();
                 return RedirectToAction("Index","Home");
             }
+            IEnumerable<Genre> genreList = Context.Genres;
+            ViewData["genres"] = genreList;
             return View(book);
         }
         public IActionResult BookDetails(int id)
@@ -43,7 +46,6 @@ namespace BestBook.Controllers
             var book = Context.Books.FirstOrDefault(b => b.Id == id);
 
             return View(book);
-
         }
     }
 }
