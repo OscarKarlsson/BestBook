@@ -13,7 +13,8 @@ namespace BestBook.Model
     {
         public Book()
         {
-            Reviews = new HashSet<Review>();
+            //Reviews = new HashSet<Review>();
+            Reviews = new List<Review>();
         }
 
         [Key]

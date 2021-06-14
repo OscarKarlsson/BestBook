@@ -1,7 +1,9 @@
 ﻿@model Book
 @{
     Layout = "_Layout";
+
 }
+
 
 <h1 style="text-align:center">@Model.Name</h1>
 <div class="container">
@@ -11,7 +13,7 @@
             <br /><br />
 
             @*<input type="submit" value="Add Review" asp-controller="Review" asp-action="CreateReview"/>*@
-            <input type="submit" value="Add Review" onclick="location.href='@Url.Action("CreateReview", "Review", new { bookId = Model.Id})'"/>
+            <input type="submit" value="Add Review" onclick="location.href='@Url.Action("CreateReview", "Review", new { bookId = Model.Id})'" />
             <br />
             <input type="submit" name="deleteBook" value="Delete Book" />
             <br />
@@ -22,7 +24,66 @@
         </div>
 
     </div>
+    <div class="container">
+        <div class="rounded" style="border:1px solid grey;background-color:antiquewhite">
+            <div class="row">
+                <div class="col" style="height:100px;">
+                    <div style="background-color: lightgray">
+                        @foreach (var review in ViewData["reviews"] as IEnumerable<Review>)
+                        {
+                            
+                                <div class="row" style="height:50px;">
+                                    <h6>@review.Name</h6>
+                                </div>
+                                <div class="row">
+                                    @review.Text
+                                </div>
+                                <div class="row">
+                                    @review.Stars
+                                </div>
+                                <div class="row">
+                                    <div class="d-grid d-md-flex justify-content-lg-center" style="height:100px;vertical-align:middle">
+                                        <input type="submit" class="btn btn-outline-primary" style="height:50px" value="Edit Review" onclick="location.href='@Url.Action("BookDetails", "Book", new {id=review.Id })'">
+                                        <input type="submit" class="btn btn-outline-primary" style="height:50px" value="Delete Review" onclick="location.href='@Url.Action("BookDetails", "Book", new {id=review.Id })'">
+                                    </div>
+                                </div>
+                            
+                        }
 
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    @*<div class="container">
+        <div style="border: 1px solid grey">
+            @foreach (var review in ViewData["reviews"] as IEnumerable<Review>)
+            {
+                <div style="border: 1px solid grey">
+                    @review.Name;
+                    <br />
+                    @review.Text;
+                    <br />
+                    @review.Stars
+                </div>
+
+            }
+        </div>*@
+
+    @*@foreach (var review in Model.Reviews.ToList())
+        {
+            <p>
+                @review.Name;
+                @review.Text;
+                @review.Stars;
+            </p>
+
+        }*@
+</div>
 </div>
 
 

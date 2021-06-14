@@ -36,11 +36,15 @@ namespace BestBook.Controllers
         {
             if (ModelState.IsValid)
             {
-                Context.Books.FirstOrDefault(b => b.Id == review.BookId).Reviews.Add(review);
+                var book = Context.Books.FirstOrDefault(b => b.Id == review.BookId);
+                book.Reviews.Add(review);
+                //Context.Books.FirstOrDefault(b => b.Id == review.BookId).Reviews.Add(review);
                 Context.SaveChanges();
                 return RedirectToAction("Index", "Home");
             }
             return View(review);
         }
+        
+
     }
 }
