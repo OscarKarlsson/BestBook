@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace BestBook.Controllers
 {
     public class ReviewController : Controller
-    {
+    {        
         public BookContext Context { get; set; }
         public ReviewController(BookContext context)
         {
@@ -23,7 +23,10 @@ namespace BestBook.Controllers
         {
 
             var book = Context.Books.FirstOrDefault(b => b.Id == bookId);
-            TempData["book"] = book;
+            ViewData["title"] = book.Name;
+            ViewData["bookid"] = book.Id;
+            
+
             return View();
         }
 
@@ -33,7 +36,7 @@ namespace BestBook.Controllers
         {
             if (ModelState.IsValid)
             {
-                Context.Reviews.Add(review);
+                Context.Books.FirstOrDefault(b => b.Id == review.BookId).Reviews.Add(review);
                 Context.SaveChanges();
                 return RedirectToAction("Index", "Home");
             }

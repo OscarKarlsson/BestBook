@@ -11,7 +11,7 @@
             <br /><br />
 
             @*<input type="submit" value="Add Review" asp-controller="Review" asp-action="CreateReview"/>*@
-            <input type="submit" value="Add Review" onclick="location.href='@Url.Action("CreateReview", "Review", new {bookId = Model.Id})'"/>
+            <input type="submit" value="Add Review" onclick="location.href='@Url.Action("CreateReview", "Review", new { bookId = Model.Id})'"/>
             <br />
             <input type="submit" name="deleteBook" value="Delete Book" />
             <br />
