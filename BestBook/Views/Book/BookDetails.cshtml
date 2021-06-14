@@ -5,9 +5,9 @@
 }
 
 
-<h1 style="text-align:center">@Model.Name</h1>
+<h1 style="text-align:left">@Model.Name</h1>
 <div class="container">
-    <div class="row justify-content-md-center">
+    <div class="row justify-content-md-start">
         <div class="col-md-auto" style="width:200px">
             <img src="@Model.PicLink" alt="No pic" width="200" height="250" />
             <br /><br />
@@ -24,38 +24,60 @@
         </div>
 
     </div>
-    <div class="container">
-        <div class="rounded" style="border:1px solid grey;background-color:antiquewhite">
-            <div class="row">
-                <div class="col" style="height:100px;">
-                    <div style="background-color: lightgray">
-                        @foreach (var review in ViewData["reviews"] as IEnumerable<Review>)
-                        {
-                            
-                                <div class="row" style="height:50px;">
-                                    <h6>@review.Name</h6>
-                                </div>
-                                <div class="row">
-                                    @review.Text
-                                </div>
-                                <div class="row">
-                                    @review.Stars
-                                </div>
-                                <div class="row">
-                                    <div class="d-grid d-md-flex justify-content-lg-center" style="height:100px;vertical-align:middle">
-                                        <input type="submit" class="btn btn-outline-primary" style="height:50px" value="Edit Review" onclick="location.href='@Url.Action("BookDetails", "Book", new {id=review.Id })'">
-                                        <input type="submit" class="btn btn-outline-primary" style="height:50px" value="Delete Review" onclick="location.href='@Url.Action("BookDetails", "Book", new {id=review.Id })'">
-                                    </div>
-                                </div>
-                            
-                        }
 
+    <br />
+    <div class="row justify-content-start col-6">
+        <h5>Reviews</h5>
+        <div class="rounded" style="border:1px solid grey">
+            @foreach (var review in ViewData["reviews"] as IEnumerable<Review>)
+            {
+                <div class="rounded" style="border:1px solid grey; background-color:antiquewhite">
+                    <div class="row">
+                        <h6 class="pl-4">@review.Name</h6>
+                    </div>
+                    <div class="row">
+                        <p class="pl-4">@review.Text</p>
+                    </div>
+                    <div class="row">
+                        <p class="pl-4">Rating: @review.Stars</p>
                     </div>
                 </div>
-
-            </div>
+            }
         </div>
     </div>
+
+    @*<div class="container">
+            <div class="rounded" style="border:1px solid grey;background-color:antiquewhite">
+                <div class="row">
+                    <div class="col" style="height:100px;">
+                        <div>
+                            @foreach (var review in ViewData["reviews"] as IEnumerable<Review>)
+                            {
+                                <div style="border: 1px;">
+                                    <div class="row" style="height:50px;">
+                                        <h6>@review.Name</h6>
+                                    </div>
+                                    <div class="row">
+                                        @review.Text
+                                    </div>
+                                    <div class="row">
+                                        @review.Stars
+                                    </div>
+                                    <div class="row">
+                                        <div class="d-grid d-md-flex justify-content-lg-center" style="height:100px;vertical-align:middle">
+                                            <input type="submit" class="btn btn-outline-primary" style="height:50px" value="Edit Review" onclick="location.href='@Url.Action("BookDetails", "Book", new {id=review.Id })'">
+                                            <input type="submit" class="btn btn-outline-primary" style="height:50px" value="Delete Review" onclick="location.href='@Url.Action("BookDetails", "Book", new {id=review.Id })'">
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>*@
 
 
 
@@ -84,7 +106,7 @@
 
         }*@
 </div>
-</div>
+
 
 
 
