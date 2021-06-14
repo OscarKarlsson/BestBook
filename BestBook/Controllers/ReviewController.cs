@@ -21,6 +21,7 @@ namespace BestBook.Controllers
         }
         public IActionResult CreateReview(int bookId)
         {
+
             var book = Context.Books.FirstOrDefault(b => b.Id == bookId);
             TempData["book"] = book;
             return View();

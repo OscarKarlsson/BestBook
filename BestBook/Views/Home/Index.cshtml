@@ -7,7 +7,8 @@
     <h1 style="text-align:center;">BestBooks Database</h1>
     <form method="get" style="text-align:center;padding:5vh;">
         <label><input class="form-control" type="text" name="SearchText" placeholder="Book/Author"  /></label>
-        <input type="submit" value="Search" asp-action="ItemsByName" asp-route-myvar="SearchText"  />
+        <input type="submit" value="Search Book" asp-controller="Book" asp-action="SearchBook" asp-route-myvar="SearchText"  />
+        <input type="submit" value="Search Author" asp-controller="Author" asp-action="AuthorSearch" asp-route-myvar="SearchText"  />
     </form>
     <br />
     <div class="container" style="border: 1px solid black;

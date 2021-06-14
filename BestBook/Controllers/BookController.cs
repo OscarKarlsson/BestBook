@@ -41,6 +41,11 @@ namespace BestBook.Controllers
             ViewData["genres"] = genreList;
             return View(book);
         }
+        public IActionResult SearchBook(string SearchText)
+        {
+            var books = Context.Books.Where(b => b.Name.Contains(SearchText));
+            return View(books);
+        }
         public IActionResult BookDetails(int id)
         {
             var book = Context.Books.FirstOrDefault(b => b.Id == id);

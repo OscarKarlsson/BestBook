@@ -22,6 +22,11 @@ namespace BestBook.Controllers
         {            
             return View();
         }
+        public IActionResult AuthorSearch(string SearchText)
+        {
+            var authors = Context.Authors.Where(a => a.Name.Contains(SearchText));
+            return View(authors);
+        }
         public IActionResult SearchAuthor(string name)
         {
             
