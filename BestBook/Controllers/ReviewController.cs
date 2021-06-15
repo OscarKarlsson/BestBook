@@ -40,11 +40,21 @@ namespace BestBook.Controllers
                 book.Reviews.Add(review);
                 //Context.Books.FirstOrDefault(b => b.Id == review.BookId).Reviews.Add(review);
                 Context.SaveChanges();
+                ChangeAvgStars(review);
                 return RedirectToAction("Index", "Home");
             }
             return View(review);
         }
         
-
+        private void ChangeAvgStars(Review review)
+        {
+            double reviewCount = Context.Reviews.Where(r => r.BookId == review.BookId).Count();
+            double totalStars = (int)Context.Reviews.Where(r => r.BookId == review.BookId)
+                .Select(r => r.Stars).Sum();
+            var book = Context.Books.Where(b => b.Id == review.BookId).FirstOrDefault();
+            double starValue = totalStars / reviewCount;
+            book.AvgStar = (decimal)starValue;
+            Context.SaveChanges();
+        }
     }
 }
