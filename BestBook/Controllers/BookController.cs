@@ -102,15 +102,18 @@ namespace BestBook.Controllers
         //POST - EDIT
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult EditBook(Book book)
-        {
+        public IActionResult EditBook(Book newBook)
+        {            
             if (ModelState.IsValid)
             {
+                var book = Context.Books.Find(newBook.Id);
+                book.Name = newBook.Name;
+                book.Description = newBook.Description;                
                 Context.Books.Update(book);
                 Context.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
-            return View(book);
+            return View(newBook);
         }
 
     }
