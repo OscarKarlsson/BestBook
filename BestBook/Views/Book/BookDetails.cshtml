@@ -9,8 +9,13 @@
         <h1 class="text-info">@Model.Name</h1>
         <br />
     </div>
-    <div class="row justify-content-center">
-        <img class="rounded" src="@Model.PicLink" width="300" height="350" style="border:1px solid black"/>
+    <div class="row justify-content-md-center">
+        <div class="col-md-auto">
+            <img class="rounded" src="@Model.PicLink" width="300" height="350" style="border:1px solid black" />
+        </div>
+        <div class="col-md-auto" style="width:300px">
+            @Model.Description
+        </div>
     </div>
     <div class="row justify-content-center" style="padding-top:2vh">
         <input type="submit" class="btn btn-outline-info" value="Add Review" onclick="location.href='@Url.Action("CreateReview", "Review", new { bookId = Model.Id})'" />        
@@ -20,12 +25,18 @@
     <div class="row justify-content-center" style="padding-top:5vh">
         @foreach (var review in ViewData["reviews"] as IEnumerable<Review>)
         {
-            <div class="container rounded" style="height:20vh;width:40vh;background-color:antiquewhite;border:1px solid black;">
-                <b>@review.Name</b>
-                <br />
-                @review.Text.Truncate(125, "...")
-                <br />
-                <p class="align-bottom" style="font-size:10px">Rating: @review.Stars</p>
+            <div class="container rounded" style="max-height:20vh;width:40vh;background-color:antiquewhite;border:1px solid black;">
+                <div class="row">
+                    <div class="col">
+                        <b>@review.Name</b>
+                    </div>
+                    <div class="col" style="text-align:right">
+                        <p style="font-size:10px">Rating: @review.Stars</p>
+                    </div>
+                </div>
+                <div class="row" style="padding:5px;">
+                    @review.Text.Truncate(125, "...")
+                </div>
             </div>
         }
     </div>
