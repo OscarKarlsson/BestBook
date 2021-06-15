@@ -19,8 +19,21 @@ namespace BestBook.Controllers
             return View();
         }
         public IActionResult AddAuthor()
-        {            
+        {
             return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult AddAuthor(Author author)
+        {
+            if (ModelState.IsValid)
+            {
+                Context.Authors.Add(author);
+                Context.SaveChanges();
+                return RedirectToAction("Index", "Home");
+            }
+            return View(author);
+            
         }
         public IActionResult AuthorSearch(string SearchText)
         {
@@ -40,17 +53,17 @@ namespace BestBook.Controllers
             return View(author);
 
         }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Create(Author author)
-        {
-            if (ModelState.IsValid)
-            {
-                Context.Authors.Add(author);
-                Context.SaveChanges();
-                return RedirectToAction("Index", "Home");
-            }
-            return View(author);
-        }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public IActionResult Create(Author author)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        Context.Authors.Add(author);
+        //        Context.SaveChanges();
+        //        return RedirectToAction("Index", "Home");
+        //    }
+        //    return View(author);
+        //}
     }
 }
