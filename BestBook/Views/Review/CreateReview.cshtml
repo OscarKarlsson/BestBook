@@ -19,7 +19,7 @@
                         </div>
                         <div>
                             <label asp-for="Text">Review:</label>
-                            <textarea asp-for="Text" class="form-control"></textarea>
+                            <textarea asp-for="Text" class="form-control" ></textarea>
                             <span asp-validation-for="Text" class="text-danger"></span>
                         </div>
                         <div>
@@ -36,8 +36,8 @@
                             <span asp-validation-for="Stars" class="text-danger"></span>
                             <br />
                             <div>
-                                <label asp-for="BookId">Book Id:</label>
-                                <input asp-for="BookId" class="form-control" value="@ViewData["bookid"]" />
+                                
+                                <input asp-for="BookId" class="text-hide" value="@ViewData["bookid"]" />
                                 <span asp-validation-for="BookId" class="text-danger"></span>
                             </div>
                             <br />
