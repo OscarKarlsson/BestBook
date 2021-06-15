@@ -32,14 +32,16 @@
             @foreach (var review in ViewData["reviews"] as IEnumerable<Review>)
             {
                 <div class="rounded" style="border:1px solid grey; background-color:antiquewhite">
-                    <div class="row">
-                        <h6 class="pl-4">@review.Name</h6>
-                    </div>
-                    <div class="row">
-                        <p class="pl-4">@review.Text</p>
-                    </div>
-                    <div class="row">
-                        <p class="pl-4">Rating: @review.Stars</p>
+                    <div class="col-11">
+                        <div class="row">
+                            <h6 class="pl-4">@review.Name</h6>
+                        </div>
+                        <div class="row">
+                            <p class="pl-4">@review.Text</p>
+                        </div>
+                        <div class="row">
+                            <p class="pl-4">Rating: @review.Stars</p>
+                        </div>
                     </div>
                 </div>
             }
