@@ -10,5 +10,9 @@
         <div class="col-3">
             <p>@Model.HomeTown</p>
         </div>
+        <div class="row justify-content-center" style="padding-top:2vh">            
+            <input type="submit" class="btn btn-outline-info" name="editBook" value="Edit Author" onclick="location.href='@Url.Action("EditAuthor", "Author", new { id = Model.Id})'" />
+            <input type="submit" class="btn btn-outline-danger" name="deleteBook" value="Delete Author" onclick="location.href='@Url.Action("DeleteAuthor", "Author", new { id = Model.Id})'" />
+        </div>
     </div>
 </div>

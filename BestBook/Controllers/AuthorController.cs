@@ -53,6 +53,26 @@ namespace BestBook.Controllers
             return View(author);
 
         }
+        public IActionResult EditAuthor(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            var author = Context.Authors.Find(id);
+            if (author == null)
+            {
+                return NotFound();
+            }
+            return View(author);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult EditAuthor(int id)
+        {
+            var author = Context.Authors.Find(id);
+            return View(author);
+        }
         //[HttpPost]
         //[ValidateAntiForgeryToken]
         //public IActionResult Create(Author author)
