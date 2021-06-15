@@ -42,5 +42,6 @@ namespace BestBook.Model
         public virtual Genre Genre { get; set; }
         [InverseProperty(nameof(Review.Book))]
         public virtual ICollection<Review> Reviews { get; set; }
+
     }
 }

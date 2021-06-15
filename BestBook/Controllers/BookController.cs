@@ -20,6 +20,10 @@ namespace BestBook.Controllers
         {
             return View();
         }
+        public int GetReviewCount(int bookid)
+        {
+            return Context.Reviews.Where(r => r.BookId == bookid).Count();
+        }
         public IActionResult Create()
         {
             IEnumerable<Genre> genreList = Context.Genres;
@@ -44,7 +48,13 @@ namespace BestBook.Controllers
         public IActionResult SearchBook(string SearchText)
         {
             var books = Context.Books.Where(b => b.Name.Contains(SearchText));
+            ViewBag.GetReviewCount =
+                new Func<int, int>(ReturnCount);
             return View(books);
+        }
+        public int ReturnCount(int id)
+        {
+            return Context.Reviews.Where(r => r.BookId == id).Count();
         }
         public IActionResult BookDetails(int id)
         {

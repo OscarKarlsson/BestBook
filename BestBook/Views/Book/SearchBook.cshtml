@@ -21,8 +21,9 @@
                     <span style="font-size:10px">
                         Rating: @if (book.AvgStar != null)
                         {
-                            @book.AvgStar;
+                            @book.AvgStar;                            
                         }
+                        (@ViewBag.GetReviewCount(book.Id))
                     </span>
                 </div>
                 <div class="col-md-auto d-flex align-items-center justify-content-center rounded" style="background-color:antiquewhite;">
