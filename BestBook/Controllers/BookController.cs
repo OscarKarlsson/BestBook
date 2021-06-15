@@ -54,6 +54,39 @@ namespace BestBook.Controllers
 
             return View(book);
         }
-        
+        public IActionResult DeleteBook(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            var book = Context.Books.Find(id);
+            if (book == null)
+            {
+                return NotFound();
+            }
+            return View(book);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeletePost(int? id)
+        {
+            var book = Context.Books.Find(id);
+            if (book == null)
+            {
+                return NotFound();
+            }
+            
+            foreach (var review in book.Reviews)
+            {
+                book.Reviews.Remove(review);
+            }
+            Context.SaveChanges();
+            Context.Books.Remove(book);            
+            Context.SaveChanges();
+            return RedirectToAction("Index", "Home");
+
+        }
+
     }
 }

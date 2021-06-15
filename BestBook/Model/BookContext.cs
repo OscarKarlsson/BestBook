@@ -39,12 +39,12 @@ namespace BestBook.Model
             {
                 entity.HasOne(d => d.Author)
                     .WithMany(p => p.Books)
-                    .HasForeignKey(d => d.AuthorId)
+                    .HasForeignKey(d => d.AuthorId)                      
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__Book__AuthorID__286302EC");
 
                 entity.HasOne(d => d.Genre)
-                    .WithMany(p => p.Books)
+                    .WithMany(p => p.Books)                       
                     .HasForeignKey(d => d.GenreId)
                     .HasConstraintName("FK__Book__GenreID__276EDEB3");
             });
@@ -52,7 +52,7 @@ namespace BestBook.Model
             modelBuilder.Entity<Review>(entity =>
             {
                 entity.HasOne(d => d.Book)
-                    .WithMany(p => p.Reviews)
+                    .WithMany(p => p.Reviews)                    
                     .HasForeignKey(d => d.BookId)
                     .HasConstraintName("FK__Review__BookID__2B3F6F97");
             });
