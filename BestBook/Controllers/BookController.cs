@@ -92,25 +92,25 @@ namespace BestBook.Controllers
             {
                 return NotFound();
             }
-            var obj = _db.Category.Find(Id);
-            if (obj == null)
+            var book = Context.Books.Find(Id);
+            if (book == null)
             {
                 return NotFound();
             }
-            return View(obj);
+            return View(book);
         }
         //POST - EDIT
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(Category obj)
+        public IActionResult Edit(Book book)
         {
             if (ModelState.IsValid)
             {
-                _db.Category.Update(obj);
-                _db.SaveChanges();
+                Context.Books.Update(book);
+                Context.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(obj);
+            return View(book);
         }
 
     }
