@@ -17,7 +17,7 @@
             <br />
             <input type="submit" name="deleteBook" value="Delete Book" onclick="location.href='@Url.Action("DeleteBook", "Book", new { id = Model.Id})'" />
             <br />
-            <input type="submit" name="editBook" value="Edit Book" />
+            <input type="submit" name="editBook" value="Edit Book" onclick="location.href='@Url.Action("EditBook", "Book", new { id = Model.Id})'"/>
         </div>
         <div class="col-3">
             <p>@Model.Description</p>

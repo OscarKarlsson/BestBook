@@ -86,7 +86,7 @@ namespace BestBook.Controllers
             Context.SaveChanges();
             return RedirectToAction("Index", "Home");
         }
-        public IActionResult Edit(int? Id)
+        public IActionResult EditBook(int? Id)
         {
             if (Id == null || Id == 0)
             {
@@ -102,7 +102,7 @@ namespace BestBook.Controllers
         //POST - EDIT
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(Book book)
+        public IActionResult EditBook(Book book)
         {
             if (ModelState.IsValid)
             {
