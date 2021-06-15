@@ -4,16 +4,42 @@
 
 }
 
+<div class="container justify-content-center">
+    <div class="row justify-content-center">
+        <h1 class="text-info">@Model.Name</h1>
+        <br />
+    </div>
+    <div class="row justify-content-center">
+        <img class="rounded" src="@Model.PicLink" width="300" height="350" style="border:1px solid black"/>
+    </div>
+    <div class="row justify-content-center" style="padding-top:2vh">
+        <input type="submit" class="btn btn-outline-info" value="Add Review" onclick="location.href='@Url.Action("CreateReview", "Review", new { bookId = Model.Id})'" />        
+        <input type="submit" class="btn btn-outline-info" name="editBook" value="Edit Book" onclick="location.href='@Url.Action("EditBook", "Book", new { id = Model.Id})'" />
+        <input type="submit" class="btn btn-outline-danger" name="deleteBook" value="Delete Book" onclick="location.href='@Url.Action("DeleteBook", "Book", new { id = Model.Id})'" />
+    </div>
+    <div class="row justify-content-center" style="padding-top:5vh">
+        @foreach (var review in ViewData["reviews"] as IEnumerable<Review>)
+        {
+            <div class="container rounded" style="height:20vh;width:40vh;background-color:antiquewhite;border:1px solid black;">
+                <b>@review.Name</b>
+                <br />
+                @review.Text.Truncate(125, "...")
+                <br />
+                <p class="align-bottom" style="font-size:10px">Rating: @review.Stars</p>
+            </div>
+        }
+    </div>
+</div>
 
-<h1 style="text-align:left">@Model.Name</h1>
+<!--<h1 style="text-align:left">@Model.Name</h1>
 <div class="container">
     <div class="row justify-content-md-start">
         <div class="col-md-auto" style="width:200px">
             <img src="@Model.PicLink" alt="No pic" width="200" height="250" />
-            <br /><br />
+            <br /><br />-->
 
             @*<input type="submit" value="Add Review" asp-controller="Review" asp-action="CreateReview"/>*@
-            <input type="submit" value="Add Review" onclick="location.href='@Url.Action("CreateReview", "Review", new { bookId = Model.Id})'" />
+            <!--<input type="submit" value="Add Review" onclick="location.href='@Url.Action("CreateReview", "Review", new { bookId = Model.Id})'" />
             <br />
             <input type="submit" name="deleteBook" value="Delete Book" onclick="location.href='@Url.Action("DeleteBook", "Book", new { id = Model.Id})'" />
             <br />
@@ -48,67 +74,7 @@
             }
         </div>
     </div>
-
-    @*<div class="container">
-            <div class="rounded" style="border:1px solid grey;background-color:antiquewhite">
-                <div class="row">
-                    <div class="col" style="height:100px;">
-                        <div>
-                            @foreach (var review in ViewData["reviews"] as IEnumerable<Review>)
-                            {
-                                <div style="border: 1px;">
-                                    <div class="row" style="height:50px;">
-                                        <h6>@review.Name</h6>
-                                    </div>
-                                    <div class="row">
-                                        @review.Text
-                                    </div>
-                                    <div class="row">
-                                        @review.Stars
-                                    </div>
-                                    <div class="row">
-                                        <div class="d-grid d-md-flex justify-content-lg-center" style="height:100px;vertical-align:middle">
-                                            <input type="submit" class="btn btn-outline-primary" style="height:50px" value="Edit Review" onclick="location.href='@Url.Action("BookDetails", "Book", new {id=review.Id })'">
-                                            <input type="submit" class="btn btn-outline-primary" style="height:50px" value="Delete Review" onclick="location.href='@Url.Action("BookDetails", "Book", new {id=review.Id })'">
-                                        </div>
-                                    </div>
-                                </div>
-                            }
-
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>*@
-
-
-
-    @*<div class="container">
-        <div style="border: 1px solid grey">
-            @foreach (var review in ViewData["reviews"] as IEnumerable<Review>)
-            {
-                <div style="border: 1px solid grey">
-                    @review.Name;
-                    <br />
-                    @review.Text;
-                    <br />
-                    @review.Stars
-                </div>
-
-            }
-        </div>*@
-
-    @*@foreach (var review in Model.Reviews.ToList())
-        {
-            <p>
-                @review.Name;
-                @review.Text;
-                @review.Stars;
-            </p>
-
-        }*@
-</div>
+</div>-->
 
 
 
