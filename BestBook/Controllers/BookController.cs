@@ -111,7 +111,7 @@ namespace BestBook.Controllers
                 book.Description = newBook.Description;                
                 Context.Books.Update(book);
                 Context.SaveChanges();
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("BookDetails", "Book", new { id = book.Id});
             }
             return View(newBook);
         }
