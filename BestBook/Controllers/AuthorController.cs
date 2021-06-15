@@ -33,7 +33,7 @@ namespace BestBook.Controllers
                 return RedirectToAction("Index", "Home");
             }
             return View(author);
-            
+
         }
         public IActionResult AuthorSearch(string SearchText)
         {
@@ -42,7 +42,7 @@ namespace BestBook.Controllers
         }
         public IActionResult SearchAuthor(string name)
         {
-            
+
             var authors = Context.Authors.Where(a => a.Name.Contains(name));
             return View(authors);
         }
@@ -70,10 +70,44 @@ namespace BestBook.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult EditAuthor(int id)
+        public IActionResult EditAuthor(Author newAuthor)
+        {
+            if (ModelState.IsValid)
+            {
+                var author = Context.Authors.Find(newAuthor.Id);
+                author.Name = newAuthor.Name;
+                author.HomeTown = newAuthor.HomeTown;
+                Context.Authors.Update(author);
+                Context.SaveChanges();
+                return RedirectToAction("AuthorDetails", "Author", new { id = author.Id });
+            }
+            return View(newAuthor);
+        }
+        public IActionResult DeleteAuthor(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            var author = Context.Authors.Find(id);
+            if (author == null)
+            {
+                return NotFound();
+            }
+            return View(author);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeleteAuthorPost(int? id)
         {
             var author = Context.Authors.Find(id);
-            return View(author);
+            if (author == null)
+            {
+                return NotFound();
+            }            
+            Context.Authors.Remove(author);
+            Context.SaveChanges();
+            return RedirectToAction("Index", "Home");
         }
         //[HttpPost]
         //[ValidateAntiForgeryToken]
