@@ -86,13 +86,8 @@ namespace BestBook.Controllers
             {
                 return NotFound();
             }
-            
-            foreach (var review in book.Reviews)
-            {
-                book.Reviews.Remove(review);
-            }
-            Context.SaveChanges();
-            Context.Books.Remove(book);            
+           
+            Context.Books.Remove(book);
             Context.SaveChanges();
             return RedirectToAction("Index", "Home");
         }
