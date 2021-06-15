@@ -22,7 +22,11 @@ namespace BestBook.Controllers
             _context = context;
             _logger = logger;
         }
-
+        public IActionResult about()
+        {
+            
+            return View();
+        }
         public IActionResult Index()
         {
             IEnumerable<Genre> genres = _context.Genres;
