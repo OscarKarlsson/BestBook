@@ -125,6 +125,28 @@ namespace BestBook.Controllers
             }
             return View(newBook);
         }
+        public IActionResult ListTop10Books()
+        {
+            var countBooks = Context.Books.Count();
+
+            int amount = 10;
+
+            if (countBooks <10)
+            {
+                amount = countBooks;
+            }
+            var books = Context.Books.OrderByDescending(b => b.AvgStar).Take(amount).ToList();
+
+            foreach (var book in books)
+            {
+                if (book.AvgStar == null)
+                {
+                    book.AvgStar = 0;
+                }
+            }
+
+            return View(books);
+        }
 
     }
 }
