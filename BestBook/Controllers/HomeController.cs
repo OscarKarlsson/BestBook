@@ -23,8 +23,7 @@ namespace BestBook.Controllers
             _logger = logger;
         }
         public IActionResult about()
-        {
-            
+        {            
             return View();
         }
         public IActionResult Index()
