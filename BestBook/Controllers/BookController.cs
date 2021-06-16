@@ -60,6 +60,10 @@ namespace BestBook.Controllers
         {
             var reviewList = Context.Reviews.Where(b => b.BookId == id).ToList();
             ViewData["reviews"] = reviewList;
+
+            var bookAuthorID = Context.Books.Where(b => b.Id == id).Select(b => b.AuthorId).First();
+            var author = Context.Authors.First(a => a.Id == bookAuthorID);
+            ViewData["author"] = author.Name;
             var book = Context.Books.FirstOrDefault(b => b.Id == id);
 
             return View(book);

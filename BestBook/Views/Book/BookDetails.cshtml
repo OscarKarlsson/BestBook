@@ -10,10 +10,11 @@
         <br />
     </div>
     <div class="row justify-content-md-center">
-        <div class="col-md-auto">
+        <div style="padding-right:2vh">
             <img class="rounded" src="@Model.PicLink" width="300" height="350" style="border:1px solid black" />
         </div>
-        <div class="col-md-auto" style="width:300px">
+        <div style="width:300px">
+            <h3>Author: @ViewData["author"].ToString()</h3>
             @Model.Description
         </div>
     </div>
