@@ -13,8 +13,8 @@ namespace BestBook.CustomAttributes
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {            
             int id = (int)value;                      
-            var test = Context.Authors.Any(a => a.Id == id);
-            if (!test)
+            var authorExists = Context.Authors.Any(a => a.Id == id);
+            if (!authorExists)
             {
                 return new ValidationResult(this.FormatErrorMessage(validationContext.DisplayName));
             }
