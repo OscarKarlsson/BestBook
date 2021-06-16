@@ -42,9 +42,13 @@ namespace BestBook.Controllers
             return View(authors);
         }
         public IActionResult SearchAuthor(string name)
-        {
-
-            var authors = Context.Authors.Where(a => a.Name.Contains(name));
+        {            
+            var authors = Context.Authors.ToList();
+            if (name != null)
+            {
+                authors = Context.Authors.Where(a => a.Name.Contains(name)).ToList();
+            }
+            
             return View(authors);
         }
         public IActionResult AuthorDetails(int id)

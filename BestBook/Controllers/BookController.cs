@@ -33,10 +33,10 @@ namespace BestBook.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(Book book)
-        {
+        {           
+            
             if (ModelState.IsValid)
-            {
-                
+            {                
                 Context.Books.Add(book);
                 Context.SaveChanges();
                 TempData["message"] = "Book added to database";
@@ -45,7 +45,8 @@ namespace BestBook.Controllers
             IEnumerable<Genre> genreList = Context.Genres;
             ViewData["genres"] = genreList;
             return View(book);
-        }
+        }        
+
         public IActionResult SearchBook(string SearchText)
         {
             var books = Context.Books.Where(b => b.Name.Contains(SearchText));

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using BestBook.CustomAttributes;
 using Microsoft.EntityFrameworkCore;
 
 #nullable disable
@@ -28,6 +29,7 @@ namespace BestBook.Model
         [Column("GenreID")]
         public int? GenreId { get; set; }
         [Column("AuthorID")]
+        [ValidateAuthorIdExistInDb(ErrorMessage = "Invalid author. Use the search function to find your author.")]
         public int AuthorId { get; set; }
         [StringLength(100)]
         public string PicLink { get; set; }
