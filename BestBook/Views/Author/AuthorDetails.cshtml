@@ -5,14 +5,34 @@
 
 
 <h1 style="text-align:center">@Model.Name</h1>
+<p style="text-align:center">Home town: @Model.HomeTown</p>
 <div class="container">
     <div class="row justify-content-md-center">
-        <div class="col-3">
-            <p>@Model.HomeTown</p>
-        </div>
-        <div class="row justify-content-center" style="padding-top:2vh">            
+        <div class="row justify-content-center" style="padding-top:1vh">
             <input type="submit" class="btn btn-outline-info" name="editBook" value="Edit Author" onclick="location.href='@Url.Action("EditAuthor", "Author", new { id = Model.Id})'" />
             <input type="submit" class="btn btn-outline-danger" name="deleteBook" value="Delete Author" onclick="location.href='@Url.Action("DeleteAuthor", "Author", new { id = Model.Id})'" />
         </div>
     </div>
 </div>
+
+
+    <div class="row justify-content-center" style="padding-top:3vh">
+      
+            @foreach (var book in ViewData["bookList"] as IEnumerable<Book>)
+            {
+                <div class="card" style="width:60vh;max-height:20vh;">
+                    <div class="card-header">
+                        <div class="col">
+                            <img class="rounded" src="@book.PicLink" width="50" height="60" style="border:1px solid black" />
+                            <b class="text-info">@book.Name</b>
+                        </div>
+                        <div class="col" style="text-align:right;font-size:10px;">
+                            Rating: @book.AvgStar
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="width:5vh;"></div>
+            }
+   
+
+    </div>

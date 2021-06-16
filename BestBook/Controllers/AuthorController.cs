@@ -49,6 +49,8 @@ namespace BestBook.Controllers
         public IActionResult AuthorDetails(int id)
         {
             var author = Context.Authors.FirstOrDefault(b => b.Id == id);
+            var books = Context.Books.Where(b => b.AuthorId == id).ToList();
+            ViewData["bookList"] = books;
 
             return View(author);
 
