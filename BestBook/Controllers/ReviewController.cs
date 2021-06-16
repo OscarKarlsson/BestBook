@@ -41,6 +41,7 @@ namespace BestBook.Controllers
                 //Context.Books.FirstOrDefault(b => b.Id == review.BookId).Reviews.Add(review);
                 Context.SaveChanges();
                 ChangeAvgStars(review);
+                TempData["message"] = "Review added to database";
                 return RedirectToAction("Index", "Home");
             }
             return View(review);

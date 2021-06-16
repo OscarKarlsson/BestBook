@@ -30,6 +30,7 @@ namespace BestBook.Controllers
             {
                 Context.Authors.Add(author);
                 Context.SaveChanges();
+                TempData["message"] = "Author added to database";
                 return RedirectToAction("Index", "Home");
             }
             return View(author);
@@ -107,6 +108,7 @@ namespace BestBook.Controllers
             }            
             Context.Authors.Remove(author);
             Context.SaveChanges();
+            TempData["message"] = "Author removed from database";
             return RedirectToAction("Index", "Home");
         }
         //[HttpPost]
