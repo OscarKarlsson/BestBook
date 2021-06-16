@@ -29,6 +29,7 @@ namespace BestBook.Controllers
         }
         public IActionResult Index()
         {
+            ViewBag.message = TempData["message"];
             IEnumerable<Genre> genres = _context.Genres;
             return View(genres);
         }

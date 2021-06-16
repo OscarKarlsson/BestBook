@@ -39,6 +39,7 @@ namespace BestBook.Controllers
                 
                 Context.Books.Add(book);
                 Context.SaveChanges();
+                TempData["message"] = "Book added to database";
                 return RedirectToAction("Index","Home");
             }
             IEnumerable<Genre> genreList = Context.Genres;
