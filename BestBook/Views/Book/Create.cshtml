@@ -29,13 +29,20 @@
 
                         <div class="container">
                             <div class="col p-0">
-                                <label asp-for="AuthorId">Author:</label>
-                                <input type="text" id="authorName" asp-for="AuthorId" class="form-control" value="" />
-                                <span asp-validation-for="AuthorId" class="text-danger"></span>                                
-                            </div>                            
+                                <label>Author name:</label>
+                                <input type="text" id="authorName" class="form-control" value="" />                                
+                            </div>
                             <div class="col">
                                 <button type="button" class="btn btn-outline-info" onclick="urlChange()">Search</button>
                             </div>
+                        </div>
+                        <div class="container">
+                            <div class="col p-0">
+                                <label asp-for="AuthorId">Author Id:
+                                    <p style="font-size: 10px">Automatically fills up when an author is selected from the search result.</p></label>
+                                <input type="text" id="authorId" asp-for="AuthorId" readonly class="form-control" value="" />
+                                <span asp-validation-for="AuthorId" class="text-danger"></span>
+                            </div>                            
                         </div>
 
 
@@ -46,9 +53,9 @@
                                 @foreach (var genre in ViewData["genres"] as IEnumerable<Genre>)
                                 {
                                     <option value="@genre.Id">@genre.GenreName</option>
-                                    
+
                                 }
-                                
+
                             </select>
                             <span asp-validation-for="GenreId" class="text-danger"></span>
                             <br />
@@ -76,8 +83,8 @@
 </script>
 <script>
     function SendAuthor(input) {
-        var name = input;
-        document.getElementById('authorName').value = name;
+        var id = input;
+        document.getElementById('authorId').value = id;
     }
 </script>
 <script>
