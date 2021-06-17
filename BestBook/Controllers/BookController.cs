@@ -6,15 +6,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Session;
+using Microsoft.Extensions.Hosting;
+using System.IO;
+
 namespace BestBook.Controllers
 {
     public class BookController : Controller
     {
+        private readonly IHostingEnvironment environment;
+
         public BookContext Context { get; set; }
 
-        public BookController(BookContext context)
+        public BookController(BookContext context, IHostingEnvironment _environment)
         {
             this.Context = context;
+            environment = _environment;
         }
         public IActionResult Index()
         {
@@ -36,7 +42,17 @@ namespace BestBook.Controllers
         {           
             
             if (ModelState.IsValid)
-            {                
+            {
+                //Save image to wwwroot/image
+                string wwwRootPath = environment.ContentRootPath + "\\wwwroot\\";
+                string fileName = Path.GetFileNameWithoutExtension(book.ImageFile.FileName);
+                string extension = Path.GetExtension(book.ImageFile.FileName);
+                book.PicLink = fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                string path = Path.Combine(wwwRootPath + @"\Image\", fileName);
+                using (var fileStream = new FileStream(path, FileMode.Create))
+                {
+                    book.ImageFile.CopyTo(fileStream);
+                }
                 Context.Books.Add(book);
                 Context.SaveChanges();
                 TempData["message"] = "Book added to database";
