@@ -76,7 +76,7 @@ namespace BestBook.Controllers
         }
         public IActionResult BookDetails(int id)
         {
-            var reviewList = Context.Reviews.Where(b => b.BookId == id).ToList();
+            var reviewList = Context.Reviews.Where(b => b.BookId == id).OrderBy(r => r.PostedDate).ToList();
             ViewData["reviews"] = reviewList;
 
             var bookAuthorID = Context.Books.Where(b => b.Id == id).Select(b => b.AuthorId).First();
