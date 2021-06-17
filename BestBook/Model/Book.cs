@@ -14,8 +14,7 @@ namespace BestBook.Model
     {
         public Book()
         {
-            //Reviews = new HashSet<Review>();
-            Reviews = new List<Review>();
+            Reviews = new HashSet<Review>();
         }
 
         [Key]
@@ -31,7 +30,7 @@ namespace BestBook.Model
         [Column("AuthorID")]
         [ValidateAuthorIdExistInDb()]
         public int AuthorId { get; set; }
-        [StringLength(100)]
+        [StringLength(4000)]
         public string PicLink { get; set; }
         [Column(TypeName = "decimal(3, 2)")]
         public decimal? AvgStar { get; set; }
@@ -44,6 +43,5 @@ namespace BestBook.Model
         public virtual Genre Genre { get; set; }
         [InverseProperty(nameof(Review.Book))]
         public virtual ICollection<Review> Reviews { get; set; }
-
     }
 }
