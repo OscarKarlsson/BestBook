@@ -21,7 +21,8 @@ namespace BestBook.Model
         [Column("BookID")]
         public int? BookId { get; set; }
         public int? Stars { get; set; }
-        [Column(TypeName = "date")]
+        
+        [Column(TypeName = "smalldatetime")]
         public DateTime? PostedDate { get; set; }
 
         [ForeignKey(nameof(BookId))]
