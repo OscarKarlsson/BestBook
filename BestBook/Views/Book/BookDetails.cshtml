@@ -41,8 +41,12 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <blockquote class="blockquote mb-0">
-                        @review.Text.Truncate(60, "...")
+                    <blockquote class="blockquote mb-0" style="font-size:13px">
+                        @review.Text.Truncate(60, "")
+                        @if (review.Text.Length > 60)
+                        {
+                            <a data-bs-toggle="tooltip" data-bs-placement="top" title="@review.Text">...</a>
+                        }
                     </blockquote>
                 </div>
             </div>

@@ -10,7 +10,7 @@
                 <div class="col">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <h2 class="text-info pl-3">Add Book</h2>
-                    <div class="col-4">
+                    <div class="col-7">
                         <div>
                             <label asp-for="Name">Title:</label>
                             <input asp-for="Name" class="form-control" />
@@ -27,23 +27,25 @@
                             <span asp-validation-for="PicLink" class="text-danger"></span>
                         </div>
 
-                        <div class="container">
-                            <div class="col p-0">
-                                <label>Author name:</label>
-                                <input type="text" id="authorName" class="form-control" value="" />                                
-                            </div>
-                            <div class="col">
-                                <button type="button" class="btn btn-outline-info" onclick="urlChange()">Search</button>
-                            </div>
+
+                        <div class="col p-0">
+                            <label>Search Author:</label>
+                            <input type="text" id="authorName" class="form-control" value="" />
                         </div>
-                        <div class="container">
-                            <div class="col p-0">
-                                <label asp-for="AuthorId">Author Id:
-                                    <p style="font-size: 10px">Automatically fills up when an author is selected from the search result.</p></label>
-                                <input type="text" id="authorId" asp-for="AuthorId" readonly class="form-control" value="" />
-                                <span asp-validation-for="AuthorId" class="text-danger"></span>
-                            </div>                            
+                        
+                        <button type="button" class="btn btn-outline-info" onclick="urlChange()">Search</button>
+                        
+
+
+                        <div class="col p-0">
+                            <label asp-for="AuthorId">
+                                Author Id:
+                                <p style="font-size: 10px">Automatically fills up when an author is selected from the search result.</p>
+                            </label>
+                            <input type="text" id="authorId" asp-for="AuthorId" readonly class="form-control" value="" />
+                            <span asp-validation-for="AuthorId" class="text-danger"></span>
                         </div>
+
 
 
                         <div>
@@ -90,6 +92,6 @@
 <script>
     function changeIframe() {
         document.getElementById('AuthorIframe').src = '/Author/Create';
-        
+
     }
 </script>
