@@ -32,8 +32,8 @@
                         <div class="row">
                             <b class="text-info">@review.Name</b>
                         </div>
-                        <div class="row">
-                            @review.PostedDate.Humanize()
+                        <div class="row" style="font-size:10px;">
+                            @review.PostedDate.Value.AddHours(-2).Humanize()
                         </div>
                     </div>
                     <div class="col" style="text-align:right;font-size:10px;">
