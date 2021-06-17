@@ -21,7 +21,7 @@
                 <div class="card" style="width:60vh;max-height:20vh;">
                     <div class="card-header">
                         <div class="col">
-                            <img class="rounded" src="@book.PicLink" width="50" height="60" style="border:1px solid black" />
+                            <img src="@("/Image/"+ book.PicLink)" asp-append-version="true" width="50" height="60" style="border:1px solid black" />
                             <b class="text-info">@book.Name</b>
                         </div>
                         <div class="col" style="text-align:right;font-size:10px;">
