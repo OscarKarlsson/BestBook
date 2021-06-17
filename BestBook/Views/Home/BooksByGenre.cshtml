@@ -19,12 +19,12 @@
                     {
                         <a data-bs-toggle="tooltip" data-bs-placement="top" title="@book.Description">...</a>
                     }<br />
-                    <span style="font-size:10px">
-                        Rating: @if (book.AvgStar != null)
-                        {
-                            @book.AvgStar;
-                        }
-                    </span>
+                     <span style="font-size:10px">
+                         Rating: @if (book.AvgStar != null)
+                         {
+                             @book.AvgStar;
+                         }
+                     </span>
                 </div>
                 <div class="col-md-auto d-flex align-items-center justify-content-center rounded" style="background-color:antiquewhite;">
                     <input type="submit" class="btn btn-outline-primary" style="height:50px" value="Details" onclick="location.href='@Url.Action("BookDetails", "Book", new {id=book.Id })'">
