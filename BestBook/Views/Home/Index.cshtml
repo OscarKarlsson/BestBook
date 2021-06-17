@@ -3,8 +3,7 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="container justify-content-center" style="padding-top:5vh;">
-   
+<div class="container justify-content-center" style="padding-top:5vh;"> 
     <div class="row justify-content-center">
         <h1 class="text-info">BestBooks Database</h1>
         <br />
@@ -15,7 +14,7 @@
                 <p>Best booksearching website!</p>
             </blockquote>
             <figcaption class="blockquote-footer">
-                Einstein
+                Paul Tannenberg
             </figcaption>
         </figure>
     </div>
@@ -32,7 +31,6 @@
 
 <br />
 <div class="row justify-content-center">
-    <!-- Trigger/Open The Modal -->
     <button id="myBtn" class="btn btn-outline-info">Genre List</button>
     <input type="submit" class="btn btn-outline-info" value="List top-10 best books" onclick="location.href='@Url.Action("ListTop10Books","Book")'" />
 </div>
@@ -94,9 +92,7 @@
         span.onclick = function () {
             modalViewBag.style.display = "none";
         }
-
     </script>
-
 }
 
 <script>

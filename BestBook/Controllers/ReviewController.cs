@@ -37,6 +37,7 @@ namespace BestBook.Controllers
             if (ModelState.IsValid)
             {
                 var book = Context.Books.FirstOrDefault(b => b.Id == review.BookId);
+                review.PostedDate = DateTime.Now;
                 book.Reviews.Add(review);
                 //Context.Books.FirstOrDefault(b => b.Id == review.BookId).Reviews.Add(review);
                 Context.SaveChanges();
