@@ -7,10 +7,10 @@
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 
-<div class="list-group col-6">
+<div class="list-group">
     @foreach (var author in Model)
     {
-        <button type="button" class="list-group-item list-group-item-action" aria-current="true" onclick="parent.SendAuthor('@author.Id')">
+        <button type="button" class="list-group-item list-group-item-action" aria-current="true" onclick="parent.SendAuthor('@author.Id')" style="width:100%">
             @author.Name
         </button>
     }
